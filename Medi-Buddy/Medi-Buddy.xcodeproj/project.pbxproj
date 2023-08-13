@@ -9,19 +9,21 @@
 /* Begin PBXBuildFile section */
 		D03C9D262A88E679000E9BD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D252A88E679000E9BD2 /* AppDelegate.swift */; };
 		D03C9D282A88E679000E9BD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D272A88E679000E9BD2 /* SceneDelegate.swift */; };
-		D03C9D2A2A88E679000E9BD2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D292A88E679000E9BD2 /* ViewController.swift */; };
 		D03C9D2F2A88E67A000E9BD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03C9D2E2A88E67A000E9BD2 /* Assets.xcassets */; };
 		D03C9D322A88E67A000E9BD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03C9D302A88E67A000E9BD2 /* LaunchScreen.storyboard */; };
+		D03C9D3A2A88E8D5000E9BD2 /* MediListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D392A88E8D5000E9BD2 /* MediListViewController.swift */; };
+		D03C9D3C2A88E8F5000E9BD2 /* MediCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D3B2A88E8F5000E9BD2 /* MediCalendarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D03C9D222A88E679000E9BD2 /* Medi-Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Medi-Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03C9D252A88E679000E9BD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D03C9D272A88E679000E9BD2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D03C9D292A88E679000E9BD2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D03C9D2E2A88E67A000E9BD2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D03C9D312A88E67A000E9BD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D03C9D332A88E67A000E9BD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D03C9D392A88E8D5000E9BD2 /* MediListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediListViewController.swift; sourceTree = "<group>"; };
+		D03C9D3B2A88E8F5000E9BD2 /* MediCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediCalendarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +58,11 @@
 			children = (
 				D03C9D252A88E679000E9BD2 /* AppDelegate.swift */,
 				D03C9D272A88E679000E9BD2 /* SceneDelegate.swift */,
-				D03C9D292A88E679000E9BD2 /* ViewController.swift */,
 				D03C9D2E2A88E67A000E9BD2 /* Assets.xcassets */,
 				D03C9D302A88E67A000E9BD2 /* LaunchScreen.storyboard */,
 				D03C9D332A88E67A000E9BD2 /* Info.plist */,
+				D03C9D392A88E8D5000E9BD2 /* MediListViewController.swift */,
+				D03C9D3B2A88E8F5000E9BD2 /* MediCalendarViewController.swift */,
 			);
 			path = "Medi-Buddy";
 			sourceTree = "<group>";
@@ -134,9 +137,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D03C9D2A2A88E679000E9BD2 /* ViewController.swift in Sources */,
 				D03C9D262A88E679000E9BD2 /* AppDelegate.swift in Sources */,
 				D03C9D282A88E679000E9BD2 /* SceneDelegate.swift in Sources */,
+				D03C9D3C2A88E8F5000E9BD2 /* MediCalendarViewController.swift in Sources */,
+				D03C9D3A2A88E8D5000E9BD2 /* MediListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
