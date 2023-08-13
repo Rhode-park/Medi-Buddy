@@ -13,6 +13,10 @@
 		D03C9D322A88E67A000E9BD2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D03C9D302A88E67A000E9BD2 /* LaunchScreen.storyboard */; };
 		D03C9D3A2A88E8D5000E9BD2 /* MediListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D392A88E8D5000E9BD2 /* MediListViewController.swift */; };
 		D03C9D3C2A88E8F5000E9BD2 /* MediCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D3B2A88E8F5000E9BD2 /* MediCalendarViewController.swift */; };
+		D03C9D3F2A88EAA6000E9BD2 /* Medicine.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D3E2A88EAA6000E9BD2 /* Medicine.swift */; };
+		D03C9D412A88EAB4000E9BD2 /* MedicineManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D402A88EAB4000E9BD2 /* MedicineManager.swift */; };
+		D03C9D432A88EAC1000E9BD2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D422A88EAC1000E9BD2 /* Category.swift */; };
+		D03C9D452A88EACE000E9BD2 /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D442A88EACE000E9BD2 /* CategoryManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		D03C9D332A88E67A000E9BD2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D03C9D392A88E8D5000E9BD2 /* MediListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediListViewController.swift; sourceTree = "<group>"; };
 		D03C9D3B2A88E8F5000E9BD2 /* MediCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediCalendarViewController.swift; sourceTree = "<group>"; };
+		D03C9D3E2A88EAA6000E9BD2 /* Medicine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medicine.swift; sourceTree = "<group>"; };
+		D03C9D402A88EAB4000E9BD2 /* MedicineManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicineManager.swift; sourceTree = "<group>"; };
+		D03C9D422A88EAC1000E9BD2 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		D03C9D442A88EACE000E9BD2 /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,7 @@
 		D03C9D242A88E679000E9BD2 /* Medi-Buddy */ = {
 			isa = PBXGroup;
 			children = (
+				D03C9D3D2A88EA94000E9BD2 /* Model */,
 				D03C9D252A88E679000E9BD2 /* AppDelegate.swift */,
 				D03C9D272A88E679000E9BD2 /* SceneDelegate.swift */,
 				D03C9D2E2A88E67A000E9BD2 /* Assets.xcassets */,
@@ -65,6 +74,17 @@
 				D03C9D3B2A88E8F5000E9BD2 /* MediCalendarViewController.swift */,
 			);
 			path = "Medi-Buddy";
+			sourceTree = "<group>";
+		};
+		D03C9D3D2A88EA94000E9BD2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D03C9D3E2A88EAA6000E9BD2 /* Medicine.swift */,
+				D03C9D402A88EAB4000E9BD2 /* MedicineManager.swift */,
+				D03C9D422A88EAC1000E9BD2 /* Category.swift */,
+				D03C9D442A88EACE000E9BD2 /* CategoryManager.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +158,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D03C9D262A88E679000E9BD2 /* AppDelegate.swift in Sources */,
+				D03C9D452A88EACE000E9BD2 /* CategoryManager.swift in Sources */,
+				D03C9D412A88EAB4000E9BD2 /* MedicineManager.swift in Sources */,
 				D03C9D282A88E679000E9BD2 /* SceneDelegate.swift in Sources */,
+				D03C9D3F2A88EAA6000E9BD2 /* Medicine.swift in Sources */,
 				D03C9D3C2A88E8F5000E9BD2 /* MediCalendarViewController.swift in Sources */,
 				D03C9D3A2A88E8D5000E9BD2 /* MediListViewController.swift in Sources */,
+				D03C9D432A88EAC1000E9BD2 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
