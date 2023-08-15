@@ -135,7 +135,8 @@ final class AddMedicineViewController: UIViewController {
             self.selectedCategory = category.name
         }
         
-        categoryViewController.selectCategoryButton(selectedCategory: categoryList.getCategory(of: selectedCategory))
+        guard let currentCategory = categoryList.getCategory(of: selectedCategory) else { return }
+        categoryViewController.currentCategory(category: currentCategory)
         
         self.present(categoryViewController, animated: true)
     }
