@@ -6,10 +6,10 @@
 //
 
 struct Medicine: Equatable {
-    var name: String
-    var maximumDose: Int
-    var currentDose: Int
-    var category: Category?
+    let name: String
+    let maximumDose: Int
+    let currentDose: Int
+    let category: Category?
     
     var doseState: String {
         return "\(currentDose)/\(maximumDose)"

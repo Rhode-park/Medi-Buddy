@@ -8,11 +8,11 @@
 import UIKit
 
 final class MediListViewController: UIViewController {
-    var categoryList: [Category] {
+    private var categoryList: [Category] {
         return MedicineManager.shared.categoryList
     }
     
-    lazy var isSectionHidden = [Category: Bool]() {
+    private var isSectionHidden = [Category: Bool]() {
         didSet {
             mediListCollectionView.reloadData()
         }
@@ -30,26 +30,30 @@ final class MediListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        configureDataSource()
+    }
+    
+    private func configureUI() {
+        view.backgroundColor = .systemBackground
         configureNavigationBar()
         configureSubView()
         configureConstraint()
     }
     
-    private func configureUI() {
-        view.backgroundColor = .systemBackground
+    private func configureDataSource() {
         mediListCollectionView.dataSource = self
     }
     
     private func configureNavigationBar() {
         let addMedicineButton = UIBarButtonItem(barButtonSystemItem: .add,
                                                 target: self,
-                                                action: #selector(addMedicine))
+                                                action: #selector(addMedicineButtonTapped))
         addMedicineButton.tintColor = .systemCyan
         
         let settingButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"),
                                             style: .plain,
                                             target: self,
-                                            action: #selector(setMedicineList))
+                                            action: #selector(settingButtonTapped))
         settingButton.tintColor = .systemCyan
         
         navigationItem.leftBarButtonItem = addMedicineButton
@@ -58,7 +62,7 @@ final class MediListViewController: UIViewController {
     }
     
     @objc
-    private func addMedicine() {
+    private func addMedicineButtonTapped() {
         let addMedicineViewController = AddMedicineViewController()
         addMedicineViewController.sheetPresentationController?.detents = [.medium()]
         addMedicineViewController.addMedicineHandler = { medicine in
@@ -76,7 +80,7 @@ final class MediListViewController: UIViewController {
     }
     
     @objc
-    private func setMedicineList() {
+    private func settingButtonTapped() {
         print("setMedicineList")
     }
     

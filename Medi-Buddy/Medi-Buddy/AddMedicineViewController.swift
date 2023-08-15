@@ -107,14 +107,14 @@ final class AddMedicineViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        configureLabel()
-        configureButton()
-        configureSubView()
-        configureConstraint()
     }
     
     private func configureUI() {
         view.backgroundColor = .systemBackground
+        configureLabel()
+        configureButton()
+        configureSubView()
+        configureConstraint()
     }
     
     private func configureLabel() {

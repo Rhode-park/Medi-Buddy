@@ -34,10 +34,10 @@ struct Category: Hashable {
         }
     }
     
-    var name: Name
-    var categoryColor: Int
-    var alarmTime: Date
-    var isAlarmed: Bool
+    let name: Name
+    let categoryColor: Int
+    let alarmTime: Date
+    let isAlarmed: Bool
     
     init(categoryName: Name, categoryColor: Int = 0x68B984, alarmTime: Date, isAlarmed: Bool) {
         self.name = categoryName
