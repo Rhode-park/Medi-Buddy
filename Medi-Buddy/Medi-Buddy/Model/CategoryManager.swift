@@ -26,7 +26,7 @@ class CategoryManager {
         return list.first { $0.name == name }
     }
     
-    func getCategory(at section: Int) -> Category? {
+    func getCategory(at section: Int) -> Category {
         return list[section]
     }
 }

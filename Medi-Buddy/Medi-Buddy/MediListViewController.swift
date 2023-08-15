@@ -8,10 +8,20 @@
 import UIKit
 
 final class MediListViewController: UIViewController {
+    var categoryList: [Category] {
+        return MedicineManager.shared.categoryList
+    }
+    
+    lazy var isSectionHidden = [Category: Bool]() {
+        didSet {
+            mediListCollectionView.reloadData()
+        }
+    }
+    
     lazy var mediListCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureListLayout())
-        collectionView.register(MediListCell.self, forCellWithReuseIdentifier: MediListCell.reuseIdentifier)
-        collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.reuseIdentifier)
+        collectionView.register(MediListCell.self, forCellWithReuseIdentifier: "MediListCell")
+        collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderView")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         return collectionView
@@ -25,42 +35,10 @@ final class MediListViewController: UIViewController {
         configureConstraint()
     }
     
-    func configureListLayout() -> UICollectionViewCompositionalLayout {
-        var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
-        configuration.trailingSwipeActionsConfigurationProvider = { indexPath in
-            let deleteAction = UIContextualAction(style: .destructive, title: "삭제") { action, view, actionPerformed in
-                print("deleteMedicine")
-                self.mediListCollectionView.reloadData()
-                actionPerformed(true)
-            }
-
-            return UISwipeActionsConfiguration(actions: [deleteAction])
-        }
-        configuration.headerMode = .supplementary
-        
-        let layout = UICollectionViewCompositionalLayout.list(using: configuration)
-        
-        return layout
-    }
-    
     private func configureUI() {
         view.backgroundColor = .systemBackground
         mediListCollectionView.dataSource = self
     }
-    
-    private func configureSubView() {
-        view.addSubview(mediListCollectionView)
-    }
-    
-    private func configureConstraint() {
-        NSLayoutConstraint.activate([
-            mediListCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            mediListCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            mediListCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            mediListCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        ])
-    }
-
     
     private func configureNavigationBar() {
         let addMedicineButton = UIBarButtonItem(barButtonSystemItem: .add,
@@ -81,12 +59,57 @@ final class MediListViewController: UIViewController {
     
     @objc
     private func addMedicine() {
-        print("addMedicine")
+        let addMedicineViewController = AddMedicineViewController()
+        addMedicineViewController.sheetPresentationController?.detents = [.medium()]
+        addMedicineViewController.addMedicineHandler = { medicine in
+            
+            if MedicineManager.shared.list.filter({ $0.name == medicine.name && $0.category == medicine.category }).count != 0 {
+                MedicineManager.shared.updateMedicine(medicine: medicine)
+            } else {
+                MedicineManager.shared.addMedicine(medicine: medicine)
+            }
+            
+            self.mediListCollectionView.reloadData()
+        }
+        
+        self.present(addMedicineViewController, animated: true)
     }
     
     @objc
     private func setMedicineList() {
         print("setMedicineList")
+    }
+    
+    private func configureSubView() {
+        view.addSubview(mediListCollectionView)
+    }
+    
+    func configureListLayout() -> UICollectionViewCompositionalLayout {
+        var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
+        configuration.trailingSwipeActionsConfigurationProvider = { indexPath in
+            let medicineToDelete = MedicineManager.shared.list.filter { $0.category == MedicineManager.shared.categoryList[indexPath.section] }[indexPath.item]
+            let deleteAction = UIContextualAction(style: .destructive, title: "삭제") { action, view, actionPerformed in
+                MedicineManager.shared.deleteMedicine(medicine: medicineToDelete)
+                self.mediListCollectionView.reloadData()
+                actionPerformed(true)
+            }
+
+            return UISwipeActionsConfiguration(actions: [deleteAction])
+        }
+        configuration.headerMode = .supplementary
+        
+        let layout = UICollectionViewCompositionalLayout.list(using: configuration)
+        
+        return layout
+    }
+    
+    private func configureConstraint() {
+        NSLayoutConstraint.activate([
+            mediListCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            mediListCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            mediListCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            mediListCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
     }
 }
 
@@ -94,12 +117,18 @@ extension MediListViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return MedicineManager.shared.categoryList.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        
+        if !isSectionHidden[CategoryManager.shared.getCategory(at: section), default: false] {
+            return MedicineManager.shared.list.filter { $0.category == categoryList[section] }.count
+        } else {
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let medicine = MedicineManager.shared.list.filter { $0.category == MedicineManager.shared.categoryList[indexPath.section] }[indexPath.item]
+        let medicine = MedicineManager.shared.list.filter { $0.category == categoryList[indexPath.section] }[indexPath.item]
         
         guard let cell = mediListCollectionView.dequeueReusableCell(withReuseIdentifier: "MediListCell",
                                                                     for: indexPath) as? MediListCell else { return MediListCell() }
@@ -117,9 +146,13 @@ extension MediListViewController: UICollectionViewDataSource {
                 for: indexPath
               ) as? HeaderView else { return UICollectionReusableView() }
         
-        let category = MedicineManager.shared.categoryList[indexPath.section]
+        let category = categoryList[indexPath.section]
         
         header.configureHeader(category: category)
+        header.configureIsCellHidden(isCellHidden: isSectionHidden[CategoryManager.shared.getCategory(at: indexPath.section), default: false])
+        header.hideHandler = { [weak self] isHidden in
+            self?.isSectionHidden[CategoryManager.shared.getCategory(at: indexPath.section)] = isHidden
+        }
         
         return header
     }
