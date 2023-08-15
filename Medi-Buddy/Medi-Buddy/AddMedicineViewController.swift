@@ -204,7 +204,7 @@ final class AddMedicineViewController: UIViewController {
     
     private func validateMedicine() {
         guard let medicineName = medicineTextField.text,
-              medicineName != "" else {
+              !medicineName.isEmpty else {
             displayEmptyAlert()
             
             return

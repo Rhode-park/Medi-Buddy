@@ -23,11 +23,11 @@ class MedicineManager {
         return Set(list.compactMap{ $0.category }).sorted { $0.alarmTime < $1.alarmTime }
     }
     
-    func addMedicine(medicine: Medicine) {
+    func add(medicine: Medicine) {
         list.append(medicine)
     }
     
-    func updateMedicine(medicine: Medicine) {
+    func update(medicine: Medicine) {
         guard let updateIndex = list.firstIndex(where: { $0.name == medicine.name && $0.category == medicine.category }) else { return }
         
         let medicineToUpdate = list[updateIndex]
@@ -35,11 +35,11 @@ class MedicineManager {
                                    maximumDose: medicine.maximumDose + medicineToUpdate.maximumDose,
                                    currentDose: medicine.currentDose + medicineToUpdate.currentDose,
                                    category: medicine.category)
-        deleteMedicine(medicine: medicineToUpdate)
+        delete(medicine: medicineToUpdate)
         list.append(newMedicine)
     }
     
-    func deleteMedicine(medicine: Medicine) {
+    func delete(medicine: Medicine) {
         guard let removeIndex = list.firstIndex(of: medicine) else { return }
         list.remove(at: removeIndex)
     }

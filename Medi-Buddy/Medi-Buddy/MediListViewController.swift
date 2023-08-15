@@ -68,9 +68,9 @@ final class MediListViewController: UIViewController {
         addMedicineViewController.addMedicineHandler = { medicine in
             
             if MedicineManager.shared.list.filter({ $0.name == medicine.name && $0.category == medicine.category }).count != 0 {
-                MedicineManager.shared.updateMedicine(medicine: medicine)
+                MedicineManager.shared.update(medicine: medicine)
             } else {
-                MedicineManager.shared.addMedicine(medicine: medicine)
+                MedicineManager.shared.add(medicine: medicine)
             }
             
             self.mediListCollectionView.reloadData()
@@ -93,7 +93,7 @@ final class MediListViewController: UIViewController {
         configuration.trailingSwipeActionsConfigurationProvider = { indexPath in
             let medicineToDelete = MedicineManager.shared.list.filter { $0.category == MedicineManager.shared.categoryList[indexPath.section] }[indexPath.item]
             let deleteAction = UIContextualAction(style: .destructive, title: "삭제") { action, view, actionPerformed in
-                MedicineManager.shared.deleteMedicine(medicine: medicineToDelete)
+                MedicineManager.shared.delete(medicine: medicineToDelete)
                 self.mediListCollectionView.reloadData()
                 actionPerformed(true)
             }
