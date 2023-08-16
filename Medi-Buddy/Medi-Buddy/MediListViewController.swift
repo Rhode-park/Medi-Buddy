@@ -8,10 +8,6 @@
 import UIKit
 
 final class MediListViewController: UIViewController {
-    private var categoryList: [Category] {
-        return MedicineManager.shared.categoryList
-    }
-    
     private var isSectionHidden = [Category: Bool]() {
         didSet {
             mediListCollectionView.reloadData()
@@ -91,7 +87,7 @@ final class MediListViewController: UIViewController {
     func configureListLayout() -> UICollectionViewCompositionalLayout {
         var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
         configuration.trailingSwipeActionsConfigurationProvider = { indexPath in
-            let medicineToDelete = MedicineManager.shared.list.filter { $0.category == MedicineManager.shared.categoryList[indexPath.section] }[indexPath.item]
+            guard let medicineToDelete = MedicineManager.shared.list.filter({ $0.category == MedicineManager.shared.categoryList[at: indexPath.section] })[at: indexPath.item] else { return UISwipeActionsConfiguration() }
             let deleteAction = UIContextualAction(style: .destructive, title: "삭제") { action, view, actionPerformed in
                 MedicineManager.shared.delete(medicine: medicineToDelete)
                 self.mediListCollectionView.reloadData()
@@ -123,16 +119,17 @@ extension MediListViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let category = CategoryManager.shared.getCategory(at: section) else { return 0 }
         
-        if !isSectionHidden[CategoryManager.shared.getCategory(at: section), default: false] {
-            return MedicineManager.shared.list.filter { $0.category == categoryList[section] }.count
+        if !isSectionHidden[category, default: false] {
+            return MedicineManager.shared.list.filter { $0.category == MedicineManager.shared.categoryList[at: section] }.count
         } else {
             return 0
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let medicine = MedicineManager.shared.list.filter { $0.category == categoryList[indexPath.section] }[indexPath.item]
+        guard let medicine = MedicineManager.shared.list.filter({ $0.category == MedicineManager.shared.categoryList[at: indexPath.section] })[at: indexPath.item] else { return MediListCell() }
         
         guard let cell = mediListCollectionView.dequeueReusableCell(withReuseIdentifier: "MediListCell",
                                                                     for: indexPath) as? MediListCell else { return MediListCell() }
@@ -150,12 +147,14 @@ extension MediListViewController: UICollectionViewDataSource {
                 for: indexPath
               ) as? HeaderView else { return UICollectionReusableView() }
         
-        let category = categoryList[indexPath.section]
+        guard let category = MedicineManager.shared.categoryList[at: indexPath.section] else { return HeaderView() }
+        
+        guard let hiddenCategory = CategoryManager.shared.getCategory(at: indexPath.section) else { return HeaderView() }
         
         header.configureHeader(category: category)
-        header.configureIsCellHidden(isCellHidden: isSectionHidden[CategoryManager.shared.getCategory(at: indexPath.section), default: false])
+        header.configureIsCellHidden(isCellHidden: isSectionHidden[hiddenCategory, default: false])
         header.hideHandler = { [weak self] isHidden in
-            self?.isSectionHidden[CategoryManager.shared.getCategory(at: indexPath.section)] = isHidden
+            self?.isSectionHidden[hiddenCategory] = isHidden
         }
         
         return header

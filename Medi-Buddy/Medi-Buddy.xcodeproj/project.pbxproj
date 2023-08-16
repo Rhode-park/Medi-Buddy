@@ -23,6 +23,7 @@
 		D03C9D512A8BACC3000E9BD2 /* AddMedicineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D502A8BACC3000E9BD2 /* AddMedicineViewController.swift */; };
 		D03C9D532A8BACEC000E9BD2 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D522A8BACEC000E9BD2 /* CategoryViewController.swift */; };
 		D03C9D552A8BB0DC000E9BD2 /* CategoryStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D542A8BB0DC000E9BD2 /* CategoryStackView.swift */; };
+		D03C9D592A8BB77A000E9BD2 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D582A8BB77A000E9BD2 /* Array+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		D03C9D502A8BACC3000E9BD2 /* AddMedicineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMedicineViewController.swift; sourceTree = "<group>"; };
 		D03C9D522A8BACEC000E9BD2 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		D03C9D542A8BB0DC000E9BD2 /* CategoryStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryStackView.swift; sourceTree = "<group>"; };
+		D03C9D582A8BB77A000E9BD2 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				D03C9D4C2A88EC2E000E9BD2 /* Date+.swift */,
+				D03C9D582A8BB77A000E9BD2 /* Array+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				D03C9D262A88E679000E9BD2 /* AppDelegate.swift in Sources */,
 				D03C9D452A88EACE000E9BD2 /* CategoryManager.swift in Sources */,
 				D03C9D412A88EAB4000E9BD2 /* MedicineManager.swift in Sources */,
+				D03C9D592A8BB77A000E9BD2 /* Array+.swift in Sources */,
 				D03C9D512A8BACC3000E9BD2 /* AddMedicineViewController.swift in Sources */,
 				D03C9D282A88E679000E9BD2 /* SceneDelegate.swift in Sources */,
 				D03C9D3F2A88EAA6000E9BD2 /* Medicine.swift in Sources */,
