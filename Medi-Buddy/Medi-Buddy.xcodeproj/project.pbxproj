@@ -78,18 +78,13 @@
 		D03C9D242A88E679000E9BD2 /* Medi-Buddy */ = {
 			isa = PBXGroup;
 			children = (
+				D03C9D5B2A8CCD2F000E9BD2 /* App */,
+				D03C9D5C2A8CCD3F000E9BD2 /* Resource */,
 				D03C9D4B2A88EC1A000E9BD2 /* Extension */,
 				D03C9D3D2A88EA94000E9BD2 /* Model */,
 				D03C9D462A88EBB9000E9BD2 /* View */,
-				D03C9D252A88E679000E9BD2 /* AppDelegate.swift */,
-				D03C9D272A88E679000E9BD2 /* SceneDelegate.swift */,
-				D03C9D2E2A88E67A000E9BD2 /* Assets.xcassets */,
+				D03C9D5A2A8CCD08000E9BD2 /* ViewController */,
 				D03C9D302A88E67A000E9BD2 /* LaunchScreen.storyboard */,
-				D03C9D332A88E67A000E9BD2 /* Info.plist */,
-				D03C9D392A88E8D5000E9BD2 /* MediListViewController.swift */,
-				D03C9D3B2A88E8F5000E9BD2 /* MediCalendarViewController.swift */,
-				D03C9D502A8BACC3000E9BD2 /* AddMedicineViewController.swift */,
-				D03C9D522A8BACEC000E9BD2 /* CategoryViewController.swift */,
 			);
 			path = "Medi-Buddy";
 			sourceTree = "<group>";
@@ -122,6 +117,35 @@
 				D03C9D582A8BB77A000E9BD2 /* Array+.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		D03C9D5A2A8CCD08000E9BD2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D03C9D392A88E8D5000E9BD2 /* MediListViewController.swift */,
+				D03C9D502A8BACC3000E9BD2 /* AddMedicineViewController.swift */,
+				D03C9D522A8BACEC000E9BD2 /* CategoryViewController.swift */,
+				D03C9D3B2A88E8F5000E9BD2 /* MediCalendarViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D03C9D5B2A8CCD2F000E9BD2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D03C9D252A88E679000E9BD2 /* AppDelegate.swift */,
+				D03C9D272A88E679000E9BD2 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D03C9D5C2A8CCD3F000E9BD2 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				D03C9D2E2A88E67A000E9BD2 /* Assets.xcassets */,
+				D03C9D332A88E67A000E9BD2 /* Info.plist */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,7 +373,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U7WG3SYKJM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Medi-Buddy/Info.plist";
+				INFOPLIST_FILE = "Medi-Buddy/Resource/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -376,7 +400,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = U7WG3SYKJM;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Medi-Buddy/Info.plist";
+				INFOPLIST_FILE = "Medi-Buddy/Resource/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
