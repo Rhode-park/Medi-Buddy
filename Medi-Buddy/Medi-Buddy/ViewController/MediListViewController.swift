@@ -60,7 +60,6 @@ final class MediListViewController: UIViewController {
     @objc
     private func addMedicineButtonTapped() {
         let addMedicineViewController = AddMedicineViewController()
-        addMedicineViewController.sheetPresentationController?.detents = [.medium()]
         addMedicineViewController.addMedicineHandler = { medicine in
             
             if MedicineManager.shared.list.filter({ $0.name == medicine.name && $0.category == medicine.category }).count != 0 {
