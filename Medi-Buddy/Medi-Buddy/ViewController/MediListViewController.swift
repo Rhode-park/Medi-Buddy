@@ -185,7 +185,15 @@ extension MediListViewController: UICollectionViewDelegate {
     }
     
     private func takeMedicine(indexPath: IndexPath) {
-        print(indexPath)
+        guard let category = MedicineManager.shared.categoryList[at: indexPath.section] else { return }
+        
+        guard let medicineToTake = MedicineManager.shared.list.filter({ $0.category == category })[at: indexPath.row] else { return }
+        
+        let medicine = Medicine(name: medicineToTake.name, maximumDose: .zero, currentDose: 1, category: medicineToTake.category)
+        
+        MedicineManager.shared.update(medicine: medicine)
+        
+        mediListCollectionView.reloadData()
     }
     
     private func modifyMedicine(indexPath: IndexPath) {
