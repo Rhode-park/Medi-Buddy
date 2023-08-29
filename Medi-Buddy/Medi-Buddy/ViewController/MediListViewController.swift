@@ -27,6 +27,7 @@ final class MediListViewController: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureDataSource()
+        configureDelegate()
     }
     
     private func configureUI() {
@@ -38,6 +39,10 @@ final class MediListViewController: UIViewController {
     
     private func configureDataSource() {
         mediListCollectionView.dataSource = self
+    }
+    
+    private func configureDelegate() {
+        mediListCollectionView.delegate = self
     }
     
     private func configureNavigationBar() {
@@ -87,6 +92,7 @@ final class MediListViewController: UIViewController {
         var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
         configuration.trailingSwipeActionsConfigurationProvider = { indexPath in
             guard let medicineToDelete = MedicineManager.shared.list.filter({ $0.category == MedicineManager.shared.categoryList[at: indexPath.section] })[at: indexPath.item] else { return UISwipeActionsConfiguration() }
+            
             let deleteAction = UIContextualAction(style: .destructive, title: "삭제") { action, view, actionPerformed in
                 MedicineManager.shared.delete(medicine: medicineToDelete)
                 self.mediListCollectionView.reloadData()
@@ -157,5 +163,32 @@ extension MediListViewController: UICollectionViewDataSource {
         }
         
         return header
+    }
+}
+
+extension MediListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let takeMedicineAction = UIAlertAction(title: "복용", style: .default) { UIAlertAction in
+            self.takeMedicine(indexPath: indexPath)
+        }
+        let modifyMedicineAction = UIAlertAction(title: "수정", style: .default) { UIAlertAction in
+            self.modifyMedicine(indexPath: indexPath)
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel)
+        
+        actionSheet.addAction(takeMedicineAction)
+        actionSheet.addAction(modifyMedicineAction)
+        actionSheet.addAction(cancelAction)
+        
+        present(actionSheet, animated: true)
+    }
+    
+    private func takeMedicine(indexPath: IndexPath) {
+        print(indexPath)
+    }
+    
+    private func modifyMedicine(indexPath: IndexPath) {
+        print(indexPath)
     }
 }
