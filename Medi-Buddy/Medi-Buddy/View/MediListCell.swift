@@ -8,7 +8,6 @@
 import UIKit
 
 final class MediListCell: UICollectionViewCell {
-    static let reuseIdentifier = String(describing: MediListCell.self)
     
     private let titleLabel: UILabel = {
         let label = UILabel()

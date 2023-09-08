@@ -25,6 +25,7 @@
 		D03C9D552A8BB0DC000E9BD2 /* CategoryStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D542A8BB0DC000E9BD2 /* CategoryStackView.swift */; };
 		D03C9D592A8BB77A000E9BD2 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D582A8BB77A000E9BD2 /* Array+.swift */; };
 		D0D4D89D2A95ED620007679C /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D89C2A95ED620007679C /* CustomTabBarViewController.swift */; };
+		D0D4D8A72AAAEF8D0007679C /* IdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D8A62AAAEF8D0007679C /* IdentifierProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		D03C9D542A8BB0DC000E9BD2 /* CategoryStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryStackView.swift; sourceTree = "<group>"; };
 		D03C9D582A8BB77A000E9BD2 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
 		D0D4D89C2A95ED620007679C /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
+		D0D4D8A62AAAEF8D0007679C /* IdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				D03C9D5B2A8CCD2F000E9BD2 /* App */,
 				D03C9D5C2A8CCD3F000E9BD2 /* Resource */,
 				D03C9D4B2A88EC1A000E9BD2 /* Extension */,
+				D0D4D8A52AAAEEDA0007679C /* Extra */,
 				D03C9D3D2A88EA94000E9BD2 /* Model */,
 				D03C9D462A88EBB9000E9BD2 /* View */,
 				D03C9D5A2A8CCD08000E9BD2 /* ViewController */,
@@ -149,6 +152,14 @@
 				D03C9D332A88E67A000E9BD2 /* Info.plist */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		D0D4D8A52AAAEEDA0007679C /* Extra */ = {
+			isa = PBXGroup;
+			children = (
+				D0D4D8A62AAAEF8D0007679C /* IdentifierProtocol.swift */,
+			);
+			path = Extra;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +243,7 @@
 				D03C9D3F2A88EAA6000E9BD2 /* Medicine.swift in Sources */,
 				D03C9D4A2A88EBF5000E9BD2 /* HeaderView.swift in Sources */,
 				D03C9D482A88EBD4000E9BD2 /* MediListCell.swift in Sources */,
+				D0D4D8A72AAAEF8D0007679C /* IdentifierProtocol.swift in Sources */,
 				D03C9D552A8BB0DC000E9BD2 /* CategoryStackView.swift in Sources */,
 				D03C9D3C2A88E8F5000E9BD2 /* MediCalendarViewController.swift in Sources */,
 				D03C9D532A8BACEC000E9BD2 /* CategoryViewController.swift in Sources */,
