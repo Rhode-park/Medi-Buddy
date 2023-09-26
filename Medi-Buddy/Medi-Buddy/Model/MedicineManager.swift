@@ -35,8 +35,7 @@ class MedicineManager {
                                    maximumDose: medicine.maximumDose + medicineToUpdate.maximumDose,
                                    currentDose: medicine.currentDose + medicineToUpdate.currentDose,
                                    category: medicine.category)
-        delete(medicine: medicineToUpdate)
-        list.append(newMedicine)
+        list[updateIndex] = newMedicine
     }
     
     func delete(medicine: Medicine) {
