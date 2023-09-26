@@ -198,6 +198,17 @@ final class AddMedicineViewController: UIViewController {
         doseIntStepper.addTarget(self, action: #selector(presentStepper), for: .touchUpInside)
     }
     
+    func configureContent(medicine: Medicine) {
+        medicineTextField.text = medicine.name
+        
+        guard let categoryName = medicine.category?.name else { return }
+        
+        selectedCategory = categoryName
+        doseIntStepper.value = Double(medicine.maximumDose)
+        doseIntLabel.text = "\(medicine.maximumDose)정"
+        
+    }
+    
     private func addMedicine(name: String) {
         let maximumDose = Int(doseIntStepper.value)
         let category = CategoryManager.shared.getCategory(of: selectedCategory)

@@ -218,5 +218,6 @@ extension MediListViewController: UICollectionViewDelegate {
         }
         
         self.present(addMedicineViewController, animated: true)
+        addMedicineViewController.configureContent(medicine: medicineToModify)
     }
 }
