@@ -20,20 +20,18 @@ final class AddMedicineViewController: UIViewController {
     
     var addMedicineHandler: ((Medicine) -> ())?
     
-    lazy var cancelButton: UIButton = {
+    var cancelButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
-        button.addTarget(self, action: #selector(cancelEditing), for: .touchUpInside)
         button.tintColor = .systemCyan
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
     
-    lazy var doneButton: UIButton = {
+    var doneButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "checkmark"), for: .normal)
-        button.addTarget(self, action: #selector(doneEditing), for: .touchUpInside)
         button.tintColor = .systemCyan
         button.translatesAutoresizingMaskIntoConstraints = false
         
@@ -59,9 +57,8 @@ final class AddMedicineViewController: UIViewController {
         return label
     }()
     
-    lazy var categoryButton: UIButton = {
+    var categoryButton: UIButton = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(selectCategory), for: .touchUpInside)
         button.titleLabel?.font = .preferredFont(forTextStyle: .body)
         button.layer.cornerRadius = 8
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -86,10 +83,9 @@ final class AddMedicineViewController: UIViewController {
         return label
     }()
     
-    lazy var doseIntStepper: UIStepper = {
+    var doseIntStepper: UIStepper = {
         let stepper = UIStepper()
         stepper.minimumValue = 1
-        stepper.addTarget(self, action: #selector(presentStepper), for: .touchUpInside)
         stepper.translatesAutoresizingMaskIntoConstraints = false
         
         return stepper
@@ -115,6 +111,7 @@ final class AddMedicineViewController: UIViewController {
         configureButton()
         configureSubView()
         configureConstraint()
+        configureTarget()
     }
     
     private func configureLabel() {
@@ -192,6 +189,13 @@ final class AddMedicineViewController: UIViewController {
             memoLabel.topAnchor.constraint(equalTo: doseLabel.bottomAnchor, constant: 16),
             memoLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
         ])
+    }
+    
+    private func configureTarget() {
+        cancelButton.addTarget(self, action: #selector(cancelEditing), for: .touchUpInside)
+        doneButton.addTarget(self, action: #selector(doneEditing), for: .touchUpInside)
+        categoryButton.addTarget(self, action: #selector(selectCategory), for: .touchUpInside)
+        doseIntStepper.addTarget(self, action: #selector(presentStepper), for: .touchUpInside)
     }
     
     private func addMedicine(name: String) {
