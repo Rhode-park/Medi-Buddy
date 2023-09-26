@@ -16,3 +16,11 @@ extension IdentifierProtocol {
         return String(describing: self)
     }
 }
+
+extension MediListCell: IdentifierProtocol {
+    
+}
+
+extension HeaderView: IdentifierProtocol {
+    
+}

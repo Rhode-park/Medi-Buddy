@@ -16,8 +16,8 @@ final class MediListViewController: UIViewController {
     
     lazy var mediListCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureListLayout())
-        collectionView.register(MediListCell.self, forCellWithReuseIdentifier: "MediListCell")
-        collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderView")
+        collectionView.register(MediListCell.self, forCellWithReuseIdentifier: MediListCell.reuseIdentifier)
+        collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderView.reuseIdentifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         return collectionView
@@ -136,7 +136,7 @@ extension MediListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let medicine = MedicineManager.shared.list.filter({ $0.category == MedicineManager.shared.categoryList[at: indexPath.section] })[at: indexPath.item] else { return MediListCell() }
         
-        guard let cell = mediListCollectionView.dequeueReusableCell(withReuseIdentifier: "MediListCell",
+        guard let cell = mediListCollectionView.dequeueReusableCell(withReuseIdentifier: MediListCell.reuseIdentifier,
                                                                     for: indexPath) as? MediListCell else { return MediListCell() }
         cell.configureCell(medicine: medicine)
         
@@ -148,7 +148,7 @@ extension MediListViewController: UICollectionViewDataSource {
         guard kind == UICollectionView.elementKindSectionHeader,
               let header = collectionView.dequeueReusableSupplementaryView(
                 ofKind: kind,
-                withReuseIdentifier: "HeaderView",
+                withReuseIdentifier: HeaderView.reuseIdentifier,
                 for: indexPath
               ) as? HeaderView else { return UICollectionReusableView() }
         
@@ -198,5 +198,25 @@ extension MediListViewController: UICollectionViewDelegate {
     
     private func modifyMedicine(indexPath: IndexPath) {
         print(indexPath)
+        
+        guard let category = MedicineManager.shared.categoryList[at: indexPath.section] else { return }
+        
+        guard let medicineToModify = MedicineManager.shared.list.filter({ $0.category == category })[at: indexPath.row] else { return }
+        
+        let addMedicineViewController = AddMedicineViewController()
+        addMedicineViewController.addMedicineHandler = { medicine in
+            MedicineManager.shared.update(medicine: medicine)
+            
+            
+            if MedicineManager.shared.list.filter({ $0.name == medicine.name && $0.category == medicine.category }).count != 0 {
+                MedicineManager.shared.update(medicine: medicine)
+            } else {
+                MedicineManager.shared.add(medicine: medicine)
+            }
+            
+            self.mediListCollectionView.reloadData()
+        }
+        
+        self.present(addMedicineViewController, animated: true)
     }
 }
