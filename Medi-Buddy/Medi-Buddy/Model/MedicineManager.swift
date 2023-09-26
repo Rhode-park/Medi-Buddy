@@ -30,10 +30,9 @@ class MedicineManager {
     func update(medicine: Medicine) {
         guard let updateIndex = list.firstIndex(where: { $0.name == medicine.name && $0.category == medicine.category }) else { return }
         
-        guard let medicineToUpdate = list[at: updateIndex] else { return }
         let newMedicine = Medicine(name: medicine.name,
-                                   maximumDose: medicine.maximumDose + medicineToUpdate.maximumDose,
-                                   currentDose: medicine.currentDose + medicineToUpdate.currentDose,
+                                   maximumDose: medicine.maximumDose,
+                                   currentDose: medicine.currentDose,
                                    category: medicine.category)
         list[updateIndex] = newMedicine
     }

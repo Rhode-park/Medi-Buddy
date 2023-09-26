@@ -66,12 +66,7 @@ final class MediListViewController: UIViewController {
     private func addMedicineButtonTapped() {
         let addMedicineViewController = AddMedicineViewController()
         addMedicineViewController.addMedicineHandler = { medicine in
-            
-            if MedicineManager.shared.list.filter({ $0.name == medicine.name && $0.category == medicine.category }).count != 0 {
-                MedicineManager.shared.update(medicine: medicine)
-            } else {
-                MedicineManager.shared.add(medicine: medicine)
-            }
+            MedicineManager.shared.add(medicine: medicine)
             
             self.mediListCollectionView.reloadData()
         }
@@ -207,17 +202,10 @@ extension MediListViewController: UICollectionViewDelegate {
         addMedicineViewController.addMedicineHandler = { medicine in
             MedicineManager.shared.update(medicine: medicine)
             
-            
-            if MedicineManager.shared.list.filter({ $0.name == medicine.name && $0.category == medicine.category }).count != 0 {
-                MedicineManager.shared.update(medicine: medicine)
-            } else {
-                MedicineManager.shared.add(medicine: medicine)
-            }
-            
             self.mediListCollectionView.reloadData()
         }
         
+        addMedicineViewController.configureMedicine(medicineToModify)
         self.present(addMedicineViewController, animated: true)
-        addMedicineViewController.configureContent(medicine: medicineToModify)
     }
 }

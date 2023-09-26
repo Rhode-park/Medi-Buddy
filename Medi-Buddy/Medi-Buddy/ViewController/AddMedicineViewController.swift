@@ -18,6 +18,8 @@ final class AddMedicineViewController: UIViewController {
         }
     }
     
+    var medicine: Medicine? = nil
+    
     var addMedicineHandler: ((Medicine) -> ())?
     
     var cancelButton: UIButton = {
@@ -112,6 +114,7 @@ final class AddMedicineViewController: UIViewController {
         configureSubView()
         configureConstraint()
         configureTarget()
+        configureContent()
     }
     
     private func configureLabel() {
@@ -198,7 +201,13 @@ final class AddMedicineViewController: UIViewController {
         doseIntStepper.addTarget(self, action: #selector(presentStepper), for: .touchUpInside)
     }
     
-    func configureContent(medicine: Medicine) {
+    func configureMedicine(_ medicine: Medicine) {
+        self.medicine = medicine
+    }
+    
+    private func configureContent() {
+        guard let medicine else { return }
+        
         medicineTextField.text = medicine.name
         
         guard let categoryName = medicine.category?.name else { return }
@@ -206,14 +215,14 @@ final class AddMedicineViewController: UIViewController {
         selectedCategory = categoryName
         doseIntStepper.value = Double(medicine.maximumDose)
         doseIntLabel.text = "\(medicine.maximumDose)정"
-        
     }
     
     private func addMedicine(name: String) {
         let maximumDose = Int(doseIntStepper.value)
         let category = CategoryManager.shared.getCategory(of: selectedCategory)
+        let currentDose = medicine?.currentDose ?? .zero
         
-        let medicine = Medicine(name: name, maximumDose: maximumDose, currentDose: .zero, category: category)
+        let medicine = Medicine(name: name, maximumDose: maximumDose, currentDose: currentDose, category: category)
         addMedicineHandler?(medicine)
     }
     
