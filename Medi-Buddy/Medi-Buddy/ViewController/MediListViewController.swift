@@ -84,7 +84,7 @@ final class MediListViewController: UIViewController {
     }
     
     func configureListLayout() -> UICollectionViewCompositionalLayout {
-        var configuration = UICollectionLayoutListConfiguration(appearance: .plain)
+        var configuration = UICollectionLayoutListConfiguration(appearance: .sidebarPlain)
         configuration.trailingSwipeActionsConfigurationProvider = { indexPath in
             guard let medicineToDelete = MedicineManager.shared.list.filter({ $0.category == MedicineManager.shared.categoryList[at: indexPath.section] })[at: indexPath.item] else { return UISwipeActionsConfiguration() }
             
@@ -97,6 +97,7 @@ final class MediListViewController: UIViewController {
             return UISwipeActionsConfiguration(actions: [deleteAction])
         }
         configuration.headerMode = .supplementary
+        configuration.headerTopPadding = .zero
         
         let layout = UICollectionViewCompositionalLayout.list(using: configuration)
         
