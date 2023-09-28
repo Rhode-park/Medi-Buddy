@@ -195,7 +195,7 @@ extension MediListViewController: UICollectionViewDelegate {
         
         guard let medicineToTake = MedicineManager.shared.list.filter({ $0.category == category })[at: indexPath.row] else { return }
         
-        let medicine = Medicine(name: medicineToTake.name, maximumDose: .zero, currentDose: 1, category: medicineToTake.category)
+        let medicine = Medicine(name: medicineToTake.name, maximumDose: medicineToTake.maximumDose, currentDose: medicineToTake.currentDose+1, category: medicineToTake.category)
         
         MedicineManager.shared.update(medicine: medicine)
         
