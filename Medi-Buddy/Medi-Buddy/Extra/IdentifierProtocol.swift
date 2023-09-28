@@ -24,3 +24,7 @@ extension MediListCell: IdentifierProtocol {
 extension HeaderView: IdentifierProtocol {
     
 }
+
+extension SettingCell: IdentifierProtocol {
+    
+}

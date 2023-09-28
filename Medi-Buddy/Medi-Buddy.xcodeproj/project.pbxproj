@@ -24,6 +24,11 @@
 		D03C9D532A8BACEC000E9BD2 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D522A8BACEC000E9BD2 /* CategoryViewController.swift */; };
 		D03C9D552A8BB0DC000E9BD2 /* CategoryStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D542A8BB0DC000E9BD2 /* CategoryStackView.swift */; };
 		D03C9D592A8BB77A000E9BD2 /* Array+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D582A8BB77A000E9BD2 /* Array+.swift */; };
+		D045872B2AC3F42B008F2986 /* SettingBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D045872A2AC3F42B008F2986 /* SettingBarViewController.swift */; };
+		D045872D2AC3F5D4008F2986 /* SettingItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = D045872C2AC3F5D4008F2986 /* SettingItems.swift */; };
+		D045872F2AC3F6F9008F2986 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D045872E2AC3F6F9008F2986 /* SettingCell.swift */; };
+		D04587312AC3FB31008F2986 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04587302AC3FB31008F2986 /* ContainerViewController.swift */; };
+		D04587332AC546E2008F2986 /* ModifyCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04587322AC546E2008F2986 /* ModifyCategoryViewController.swift */; };
 		D0D4D89D2A95ED620007679C /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D89C2A95ED620007679C /* CustomTabBarViewController.swift */; };
 		D0D4D8A72AAAEF8D0007679C /* IdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D8A62AAAEF8D0007679C /* IdentifierProtocol.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +53,11 @@
 		D03C9D522A8BACEC000E9BD2 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		D03C9D542A8BB0DC000E9BD2 /* CategoryStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryStackView.swift; sourceTree = "<group>"; };
 		D03C9D582A8BB77A000E9BD2 /* Array+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+.swift"; sourceTree = "<group>"; };
+		D045872A2AC3F42B008F2986 /* SettingBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Setting\U0010BarViewController.swift"; sourceTree = "<group>"; };
+		D045872C2AC3F5D4008F2986 /* SettingItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItems.swift; sourceTree = "<group>"; };
+		D045872E2AC3F6F9008F2986 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		D04587302AC3FB31008F2986 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		D04587322AC546E2008F2986 /* ModifyCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyCategoryViewController.swift; sourceTree = "<group>"; };
 		D0D4D89C2A95ED620007679C /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		D0D4D8A62AAAEF8D0007679C /* IdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +121,7 @@
 				D03C9D472A88EBD4000E9BD2 /* MediListCell.swift */,
 				D03C9D492A88EBF5000E9BD2 /* HeaderView.swift */,
 				D03C9D542A8BB0DC000E9BD2 /* CategoryStackView.swift */,
+				D045872E2AC3F6F9008F2986 /* SettingCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -127,11 +138,14 @@
 		D03C9D5A2A8CCD08000E9BD2 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				D0D4D89C2A95ED620007679C /* CustomTabBarViewController.swift */,
 				D03C9D392A88E8D5000E9BD2 /* MediListViewController.swift */,
 				D03C9D502A8BACC3000E9BD2 /* AddMedicineViewController.swift */,
 				D03C9D522A8BACEC000E9BD2 /* CategoryViewController.swift */,
+				D04587302AC3FB31008F2986 /* ContainerViewController.swift */,
+				D045872A2AC3F42B008F2986 /* SettingBarViewController.swift */,
 				D03C9D3B2A88E8F5000E9BD2 /* MediCalendarViewController.swift */,
-				D0D4D89C2A95ED620007679C /* CustomTabBarViewController.swift */,
+				D04587322AC546E2008F2986 /* ModifyCategoryViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -158,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				D0D4D8A62AAAEF8D0007679C /* IdentifierProtocol.swift */,
+				D045872C2AC3F5D4008F2986 /* SettingItems.swift */,
 			);
 			path = Extra;
 			sourceTree = "<group>";
@@ -237,7 +252,9 @@
 				D03C9D262A88E679000E9BD2 /* AppDelegate.swift in Sources */,
 				D03C9D452A88EACE000E9BD2 /* CategoryManager.swift in Sources */,
 				D03C9D412A88EAB4000E9BD2 /* MedicineManager.swift in Sources */,
+				D045872B2AC3F42B008F2986 /* SettingBarViewController.swift in Sources */,
 				D03C9D592A8BB77A000E9BD2 /* Array+.swift in Sources */,
+				D045872D2AC3F5D4008F2986 /* SettingItems.swift in Sources */,
 				D03C9D512A8BACC3000E9BD2 /* AddMedicineViewController.swift in Sources */,
 				D03C9D282A88E679000E9BD2 /* SceneDelegate.swift in Sources */,
 				D03C9D3F2A88EAA6000E9BD2 /* Medicine.swift in Sources */,
@@ -246,8 +263,11 @@
 				D0D4D8A72AAAEF8D0007679C /* IdentifierProtocol.swift in Sources */,
 				D03C9D552A8BB0DC000E9BD2 /* CategoryStackView.swift in Sources */,
 				D03C9D3C2A88E8F5000E9BD2 /* MediCalendarViewController.swift in Sources */,
+				D04587312AC3FB31008F2986 /* ContainerViewController.swift in Sources */,
 				D03C9D532A8BACEC000E9BD2 /* CategoryViewController.swift in Sources */,
 				D03C9D3A2A88E8D5000E9BD2 /* MediListViewController.swift in Sources */,
+				D045872F2AC3F6F9008F2986 /* SettingCell.swift in Sources */,
+				D04587332AC546E2008F2986 /* ModifyCategoryViewController.swift in Sources */,
 				D03C9D432A88EAC1000E9BD2 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

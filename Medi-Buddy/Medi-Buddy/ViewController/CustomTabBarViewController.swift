@@ -17,7 +17,7 @@ class CustomTabBarViewController: UITabBarController {
     }
     
     private func configureTabBar() {
-        let firstNavigationController = UINavigationController(rootViewController: MediListViewController())
+        let firstNavigationController = UINavigationController(rootViewController: ContainerViewController())
         firstNavigationController.tabBarItem.image = UIImage(systemName: "clock.badge.checkmark")
         
         let secondNavigationController = UINavigationController(rootViewController: MediCalendarViewController())

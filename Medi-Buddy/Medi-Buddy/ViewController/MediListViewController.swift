@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol MediListViewControllerDelegate: AnyObject {
+    func didTapMenuButton()
+}
+
 final class MediListViewController: UIViewController {
+    weak var delegate: MediListViewControllerDelegate?
+    
     private var isSectionHidden = [Category: Bool]() {
         didSet {
             mediListCollectionView.reloadData()
@@ -76,7 +82,7 @@ final class MediListViewController: UIViewController {
     
     @objc
     private func settingButtonTapped() {
-        print("setMedicineList")
+        didTapMenuButton()
     }
     
     private func configureSubView() {
@@ -111,6 +117,10 @@ final class MediListViewController: UIViewController {
             mediListCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             mediListCollectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    private func didTapMenuButton() {
+        delegate?.didTapMenuButton()
     }
 }
 
