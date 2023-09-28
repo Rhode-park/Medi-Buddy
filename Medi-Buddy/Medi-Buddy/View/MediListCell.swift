@@ -59,5 +59,13 @@ final class MediListCell: UICollectionViewCell {
     func configureCell(medicine: Medicine) {
         titleLabel.text = medicine.name
         countLabel.text = medicine.doseState
+        
+        if medicine.currentDose > medicine.maximumDose {
+            countLabel.textColor = .systemCyan
+        } else {
+            countLabel.textColor = .label
+        }
     }
+    
+    
 }
