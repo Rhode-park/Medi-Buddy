@@ -195,7 +195,7 @@ extension MediListViewController: UICollectionViewDelegate {
         
         guard let medicineToTake = MedicineManager.shared.list.filter({ $0.category == category })[at: indexPath.row] else { return }
         
-        let medicine = Medicine(name: medicineToTake.name, maximumDose: medicineToTake.maximumDose, currentDose: medicineToTake.currentDose+1, category: medicineToTake.category)
+        let medicine = Medicine(name: medicineToTake.name, maximumDose: medicineToTake.maximumDose, currentDose: medicineToTake.currentDose+1, category: medicineToTake.category, id: medicineToTake.id)
         
         MedicineManager.shared.update(medicine: medicine)
         
@@ -203,20 +203,18 @@ extension MediListViewController: UICollectionViewDelegate {
     }
     
     private func modifyMedicine(indexPath: IndexPath) {
-        print(indexPath)
-        
         guard let category = MedicineManager.shared.categoryList[at: indexPath.section] else { return }
         
         guard let medicineToModify = MedicineManager.shared.list.filter({ $0.category == category })[at: indexPath.row] else { return }
         
         let addMedicineViewController = AddMedicineViewController()
+        addMedicineViewController.configureMedicine(medicineToModify)
         addMedicineViewController.addMedicineHandler = { medicine in
             MedicineManager.shared.update(medicine: medicine)
             
             self.mediListCollectionView.reloadData()
         }
         
-        addMedicineViewController.configureMedicine(medicineToModify)
         self.present(addMedicineViewController, animated: true)
     }
 }

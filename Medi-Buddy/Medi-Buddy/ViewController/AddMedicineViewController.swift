@@ -5,6 +5,7 @@
 //  Created by Jinah Park on 2023/08/15.
 //
 
+import Foundation
 import UIKit
 
 final class AddMedicineViewController: UIViewController {
@@ -221,8 +222,12 @@ final class AddMedicineViewController: UIViewController {
         let maximumDose = Int(doseIntStepper.value)
         let category = CategoryManager.shared.getCategory(of: selectedCategory)
         let currentDose = medicine?.currentDose ?? .zero
+        let id = medicine?.id ?? UUID()
         
-        let medicine = Medicine(name: name, maximumDose: maximumDose, currentDose: currentDose, category: category)
+        medicine = Medicine(name: name, maximumDose: maximumDose, currentDose: currentDose, category: category, id: id)
+        
+        guard let medicine else { return }
+        
         addMedicineHandler?(medicine)
     }
     
