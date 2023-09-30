@@ -28,3 +28,7 @@ extension HeaderView: IdentifierProtocol {
 extension SettingCell: IdentifierProtocol {
     
 }
+
+extension CategoryCell: IdentifierProtocol {
+    
+}

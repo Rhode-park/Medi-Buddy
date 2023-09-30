@@ -30,6 +30,7 @@
 		D04587312AC3FB31008F2986 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04587302AC3FB31008F2986 /* ContainerViewController.swift */; };
 		D04587332AC546E2008F2986 /* ModifyCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04587322AC546E2008F2986 /* ModifyCategoryViewController.swift */; };
 		D04587352AC8D809008F2986 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04587342AC8D809008F2986 /* AddCategoryViewController.swift */; };
+		D04587372AC8DC73008F2986 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04587362AC8DC73008F2986 /* CategoryCell.swift */; };
 		D0D4D89D2A95ED620007679C /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D89C2A95ED620007679C /* CustomTabBarViewController.swift */; };
 		D0D4D8A72AAAEF8D0007679C /* IdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D8A62AAAEF8D0007679C /* IdentifierProtocol.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		D04587302AC3FB31008F2986 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		D04587322AC546E2008F2986 /* ModifyCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyCategoryViewController.swift; sourceTree = "<group>"; };
 		D04587342AC8D809008F2986 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
+		D04587362AC8DC73008F2986 /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		D0D4D89C2A95ED620007679C /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		D0D4D8A62AAAEF8D0007679C /* IdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,6 +126,7 @@
 				D03C9D492A88EBF5000E9BD2 /* HeaderView.swift */,
 				D03C9D542A8BB0DC000E9BD2 /* CategoryStackView.swift */,
 				D045872E2AC3F6F9008F2986 /* SettingCell.swift */,
+				D04587362AC8DC73008F2986 /* CategoryCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 				D045872D2AC3F5D4008F2986 /* SettingItems.swift in Sources */,
 				D03C9D512A8BACC3000E9BD2 /* AddMedicineViewController.swift in Sources */,
 				D03C9D282A88E679000E9BD2 /* SceneDelegate.swift in Sources */,
+				D04587372AC8DC73008F2986 /* CategoryCell.swift in Sources */,
 				D03C9D3F2A88EAA6000E9BD2 /* Medicine.swift in Sources */,
 				D03C9D4A2A88EBF5000E9BD2 /* HeaderView.swift in Sources */,
 				D03C9D482A88EBD4000E9BD2 /* MediListCell.swift in Sources */,
