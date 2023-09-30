@@ -29,6 +29,7 @@
 		D045872F2AC3F6F9008F2986 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D045872E2AC3F6F9008F2986 /* SettingCell.swift */; };
 		D04587312AC3FB31008F2986 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04587302AC3FB31008F2986 /* ContainerViewController.swift */; };
 		D04587332AC546E2008F2986 /* ModifyCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04587322AC546E2008F2986 /* ModifyCategoryViewController.swift */; };
+		D04587352AC8D809008F2986 /* AddCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04587342AC8D809008F2986 /* AddCategoryViewController.swift */; };
 		D0D4D89D2A95ED620007679C /* CustomTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D89C2A95ED620007679C /* CustomTabBarViewController.swift */; };
 		D0D4D8A72AAAEF8D0007679C /* IdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D8A62AAAEF8D0007679C /* IdentifierProtocol.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 		D045872E2AC3F6F9008F2986 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		D04587302AC3FB31008F2986 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		D04587322AC546E2008F2986 /* ModifyCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyCategoryViewController.swift; sourceTree = "<group>"; };
+		D04587342AC8D809008F2986 /* AddCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCategoryViewController.swift; sourceTree = "<group>"; };
 		D0D4D89C2A95ED620007679C /* CustomTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarViewController.swift; sourceTree = "<group>"; };
 		D0D4D8A62AAAEF8D0007679C /* IdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,6 +148,7 @@
 				D045872A2AC3F42B008F2986 /* SettingBarViewController.swift */,
 				D03C9D3B2A88E8F5000E9BD2 /* MediCalendarViewController.swift */,
 				D04587322AC546E2008F2986 /* ModifyCategoryViewController.swift */,
+				D04587342AC8D809008F2986 /* AddCategoryViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0D4D89D2A95ED620007679C /* CustomTabBarViewController.swift in Sources */,
+				D04587352AC8D809008F2986 /* AddCategoryViewController.swift in Sources */,
 				D03C9D4D2A88EC2E000E9BD2 /* Date+.swift in Sources */,
 				D03C9D262A88E679000E9BD2 /* AppDelegate.swift in Sources */,
 				D03C9D452A88EACE000E9BD2 /* CategoryManager.swift in Sources */,

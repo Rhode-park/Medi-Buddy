@@ -14,7 +14,29 @@ final class ModifyCategoryViewController: UIViewController {
         configureUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureNavigationBar()
+    }
+    
     private func configureUI() {
         view.backgroundColor = .systemBackground
+    }
+    
+    private func configureNavigationBar() {
+        let addCategoryButton = UIBarButtonItem(barButtonSystemItem: .add,
+                                                target: self,
+                                                action: #selector(addCategoryButtonTapped))
+        addCategoryButton.tintColor = .systemCyan
+        
+        self.navigationController?.navigationBar.topItem?.leftBarButtonItem = addCategoryButton
+        self.navigationController?.navigationBar.topItem?.title = "카테고리 수정"
+    }
+    
+    @objc
+    private func addCategoryButtonTapped() {
+        let addCategoryViewController = AddCategoryViewController()
+        
+        self.present(addCategoryViewController, animated: true)
     }
 }

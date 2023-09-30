@@ -63,9 +63,9 @@ final class MediListViewController: UIViewController {
                                             action: #selector(settingButtonTapped))
         settingButton.tintColor = .systemCyan
         
-        navigationItem.leftBarButtonItem = addMedicineButton
-        navigationItem.rightBarButtonItem = settingButton
-        navigationItem.title = Date().convertDate()
+        self.navigationController?.navigationBar.topItem?.leftBarButtonItem = addMedicineButton
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = settingButton
+        self.navigationController?.navigationBar.topItem?.title = Date().convertDate()
     }
     
     @objc

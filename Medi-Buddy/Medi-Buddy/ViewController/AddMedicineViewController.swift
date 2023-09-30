@@ -127,37 +127,6 @@ final class AddMedicineViewController: UIViewController {
         categoryButton.setTitle(categoryList.list.first?.name.description, for: .normal)
     }
     
-    @objc
-    private func selectCategory() {
-        let categoryViewController = CategoryViewController()
-        categoryViewController.sheetPresentationController?.detents = [.medium()]
-        
-        categoryViewController.selectedCategoryHandler = { category in
-            self.selectedCategory = category.name
-        }
-        
-        guard let currentCategory = categoryList.getCategory(of: selectedCategory) else { return }
-        categoryViewController.currentCategory(category: currentCategory)
-        
-        self.present(categoryViewController, animated: true)
-    }
-    
-    @objc
-    private func cancelEditing() {
-        self.dismiss(animated: true)
-    }
-    
-    @objc
-    private func doneEditing() {
-        validateMedicine()
-    }
-    
-    @objc
-    private func presentStepper() {
-        let doseInt = Int(doseIntStepper.value)
-        doseIntLabel.text = "\(doseInt)정"
-    }
-    
     private func configureSubView() {
         view.addSubview(cancelButton)
         view.addSubview(doneButton)
@@ -200,6 +169,37 @@ final class AddMedicineViewController: UIViewController {
         doneButton.addTarget(self, action: #selector(doneEditing), for: .touchUpInside)
         categoryButton.addTarget(self, action: #selector(selectCategory), for: .touchUpInside)
         doseIntStepper.addTarget(self, action: #selector(presentStepper), for: .touchUpInside)
+    }
+    
+    @objc
+    private func cancelEditing() {
+        self.dismiss(animated: true)
+    }
+    
+    @objc
+    private func doneEditing() {
+        validateMedicine()
+    }
+    
+    @objc
+    private func selectCategory() {
+        let categoryViewController = CategoryViewController()
+        categoryViewController.sheetPresentationController?.detents = [.medium()]
+        
+        categoryViewController.selectedCategoryHandler = { category in
+            self.selectedCategory = category.name
+        }
+        
+        guard let currentCategory = categoryList.getCategory(of: selectedCategory) else { return }
+        categoryViewController.currentCategory(category: currentCategory)
+        
+        self.present(categoryViewController, animated: true)
+    }
+    
+    @objc
+    private func presentStepper() {
+        let doseInt = Int(doseIntStepper.value)
+        doseIntLabel.text = "\(doseInt)정"
     }
     
     func configureMedicine(_ medicine: Medicine) {
