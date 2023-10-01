@@ -51,7 +51,7 @@ final class MediListViewController: UIViewController {
         mediListCollectionView.delegate = self
     }
     
-    private func configureNavigationBar() {
+    func configureNavigationBar() {
         let addMedicineButton = UIBarButtonItem(barButtonSystemItem: .add,
                                                 target: self,
                                                 action: #selector(addMedicineButtonTapped))

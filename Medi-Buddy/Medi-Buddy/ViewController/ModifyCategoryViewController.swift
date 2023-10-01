@@ -12,6 +12,8 @@ final class ModifyCategoryViewController: UIViewController {
         return CategoryManager.shared.list
     }
     
+    var controllerChangeHandler: (()->())?
+    
     private let categoryTableView: UITableView = {
         let tableView = UITableView()
         tableView.register(CategoryCell.self, forCellReuseIdentifier: CategoryCell.reuseIdentifier)
@@ -31,6 +33,11 @@ final class ModifyCategoryViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureNavigationBar()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        controllerChangeHandler?()
     }
     
     private func configureUI() {

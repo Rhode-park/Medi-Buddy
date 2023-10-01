@@ -45,7 +45,11 @@ extension ContainerViewController: SettingBarViewControllerDelegate {
         case .main:
             resetHome()
         case .category:
-            addViewController(to: ModifyCategoryViewController())
+            let modifyCategoryViewController = ModifyCategoryViewController()
+            modifyCategoryViewController.controllerChangeHandler = { [weak self] in
+                self?.homeViewController.configureNavigationBar()
+            }
+            addViewController(to: modifyCategoryViewController)
         }
     }
     
