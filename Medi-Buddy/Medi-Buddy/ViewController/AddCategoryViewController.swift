@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 
 final class AddCategoryViewController: UIViewController {
+    var category: Category? = nil
+    
     var cancelButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
@@ -50,6 +52,7 @@ final class AddCategoryViewController: UIViewController {
         let picker = UIDatePicker()
         picker.datePickerMode = .time
         picker.preferredDatePickerStyle = .inline
+        picker.locale = Locale(identifier: "ko_KR")
         picker.translatesAutoresizingMaskIntoConstraints = false
         
         return picker
@@ -74,6 +77,7 @@ final class AddCategoryViewController: UIViewController {
         configureSubView()
         configureConstraint()
         configureTarget()
+        configureContent()
     }
     
     private func configureSubView() {
@@ -116,6 +120,40 @@ final class AddCategoryViewController: UIViewController {
     
     @objc
     private func doneEditing() {
+        validateCategory()
+    }
+    
+    func configureCategory(_ category: Category) {
+        self.category = category
+    }
+    
+    private func configureContent() {
+        guard let category else { return }
+        
+        categoryTextField.text = category.name.description
+        alramTimePicker.date = category.alarmTime
+    }
+    
+    private func addCategory(name: String) {
+        print("addCategory")
+    }
+    
+    private func validateCategory() {
+        guard let categoryName = categoryTextField.text,
+              !categoryName.isEmpty else {
+            displayEmptyAlert()
+            
+            return
+        }
+        addCategory(name: categoryName)
         self.dismiss(animated: true)
+    }
+    
+    private func displayEmptyAlert() {
+        let alert = UIAlertController(title: nil, message: "추가하고자하는 카테고리의 이름을 입력하시오", preferredStyle: UIAlertController.Style.alert)
+        let okayAction = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(okayAction)
+        
+        present(alert, animated: false)
     }
 }

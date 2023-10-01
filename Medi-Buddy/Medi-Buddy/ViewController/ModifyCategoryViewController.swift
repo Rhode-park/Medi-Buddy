@@ -95,5 +95,12 @@ extension ModifyCategoryViewController: UITableViewDataSource {
 }
 
 extension ModifyCategoryViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let categoryToModify = categoryList[at: indexPath.row] else { return }
+        
+        let addCategoryViewController = AddCategoryViewController()
+        addCategoryViewController.configureCategory(categoryToModify)
+        
+        self.present(addCategoryViewController, animated: true)
+    }
 }
