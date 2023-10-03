@@ -38,11 +38,13 @@ struct Category: Hashable {
     let categoryColor: Int
     let alarmTime: Date
     let isAlarmed: Bool
+    let id: UUID
     
-    init(categoryName: Name, categoryColor: Int = 0x68B984, alarmTime: Date, isAlarmed: Bool) {
+    init(categoryName: Name, categoryColor: Int = 0x68B984, alarmTime: Date, isAlarmed: Bool, id: UUID = UUID()) {
         self.name = categoryName
         self.categoryColor = categoryColor
         self.alarmTime = alarmTime
         self.isAlarmed = isAlarmed
+        self.id = id
     }
 }

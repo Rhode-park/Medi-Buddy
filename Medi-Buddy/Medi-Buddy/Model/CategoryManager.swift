@@ -29,4 +29,19 @@ class CategoryManager {
     func getCategory(at section: Int) -> Category? {
         return list[at: section]
     }
+    
+    func add(category: Category) {
+        unOrderedList.append(category)
+    }
+    
+    func update(category: Category) {
+        guard let updateIndex = unOrderedList.firstIndex(where: { $0.id == category.id }) else { return }
+        
+        unOrderedList[updateIndex] = category
+    }
+    
+    func delete(category: Category) {
+        guard let removeIndex = unOrderedList.firstIndex(of: category) else { return }
+        unOrderedList.remove(at: removeIndex)
+    }
 }

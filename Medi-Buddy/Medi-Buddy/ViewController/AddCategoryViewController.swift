@@ -11,6 +11,8 @@ import UIKit
 final class AddCategoryViewController: UIViewController {
     var category: Category? = nil
     
+    var addCategoryHandler: ((Category) -> ())?
+    
     var cancelButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
@@ -39,16 +41,16 @@ final class AddCategoryViewController: UIViewController {
         return textField
     }()
     
-    let alramTimeLabel: UILabel = {
+    let alarmTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = "알람 시간"
+        label.text = "알림 시간"
         label.font = .preferredFont(forTextStyle: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
-    let alramTimePicker: UIDatePicker = {
+    let alarmTimePicker: UIDatePicker = {
         let picker = UIDatePicker()
         picker.datePickerMode = .time
         picker.preferredDatePickerStyle = .inline
@@ -56,6 +58,23 @@ final class AddCategoryViewController: UIViewController {
         picker.translatesAutoresizingMaskIntoConstraints = false
         
         return picker
+    }()
+    
+    let alarmLabel: UILabel = {
+        let label = UILabel()
+        label.text = "알림 받기"
+        label.font = .preferredFont(forTextStyle: .body)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
+    let alarmSwitch: UISwitch = {
+        let button = UISwitch()
+        button.onTintColor = .systemCyan
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
     }()
     
     let categoryColorLabel: UILabel = {
@@ -84,9 +103,11 @@ final class AddCategoryViewController: UIViewController {
         view.addSubview(cancelButton)
         view.addSubview(doneButton)
         view.addSubview(categoryTextField)
-        view.addSubview(alramTimeLabel)
-        view.addSubview(alramTimePicker)
+        view.addSubview(alarmTimeLabel)
+        view.addSubview(alarmTimePicker)
         view.addSubview(categoryColorLabel)
+        view.addSubview(alarmLabel)
+        view.addSubview(alarmSwitch)
     }
     
     private func configureConstraint() {
@@ -98,12 +119,16 @@ final class AddCategoryViewController: UIViewController {
             categoryTextField.topAnchor.constraint(equalTo: cancelButton.bottomAnchor, constant: 28),
             categoryTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
             categoryTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            alramTimeLabel.topAnchor.constraint(equalTo: categoryTextField.bottomAnchor, constant: 28),
-            alramTimeLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            alramTimePicker.centerYAnchor.constraint(equalTo: alramTimeLabel.centerYAnchor),
-            alramTimePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            alramTimePicker.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 1/3),
-            categoryColorLabel.topAnchor.constraint(equalTo: alramTimeLabel.bottomAnchor, constant: 16),
+            alarmTimeLabel.topAnchor.constraint(equalTo: categoryTextField.bottomAnchor, constant: 28),
+            alarmTimeLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            alarmTimePicker.centerYAnchor.constraint(equalTo: alarmTimeLabel.centerYAnchor),
+            alarmTimePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            alarmTimePicker.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor, multiplier: 1/3),
+            alarmLabel.topAnchor.constraint(equalTo: alarmTimeLabel.bottomAnchor, constant: 28),
+            alarmLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            alarmSwitch.centerYAnchor.constraint(equalTo: alarmLabel.centerYAnchor),
+            alarmSwitch.centerXAnchor.constraint(equalTo: alarmTimePicker.centerXAnchor),
+            categoryColorLabel.topAnchor.constraint(equalTo: alarmLabel.bottomAnchor, constant: 28),
             categoryColorLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
         ])
     }
@@ -131,11 +156,20 @@ final class AddCategoryViewController: UIViewController {
         guard let category else { return }
         
         categoryTextField.text = category.name.description
-        alramTimePicker.date = category.alarmTime
+        alarmTimePicker.date = category.alarmTime
+        alarmSwitch.isOn = category.isAlarmed
     }
     
     private func addCategory(name: String) {
-        print("addCategory")
+        let alarmTime = alarmTimePicker.date
+        let isAlarmed = alarmSwitch.isOn
+        let id = category?.id ?? UUID()
+        
+        category = Category(categoryName: Category.Name.custom(name), alarmTime: alarmTime, isAlarmed: isAlarmed, id: id)
+        
+        guard let category else { return }
+        
+        addCategoryHandler?(category)
     }
     
     private func validateCategory() {

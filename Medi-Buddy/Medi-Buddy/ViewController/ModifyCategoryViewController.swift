@@ -67,6 +67,11 @@ final class ModifyCategoryViewController: UIViewController {
     @objc
     private func addCategoryButtonTapped() {
         let addCategoryViewController = AddCategoryViewController()
+        addCategoryViewController.addCategoryHandler = { category in
+            CategoryManager.shared.add(category: category)
+            
+            self.categoryTableView.reloadData()
+        }
         
         self.present(addCategoryViewController, animated: true)
     }
@@ -107,6 +112,11 @@ extension ModifyCategoryViewController: UITableViewDelegate {
         
         let addCategoryViewController = AddCategoryViewController()
         addCategoryViewController.configureCategory(categoryToModify)
+        addCategoryViewController.addCategoryHandler = { category in
+            CategoryManager.shared.update(category: category)
+            
+            self.categoryTableView.reloadData()
+        }
         
         self.present(addCategoryViewController, animated: true)
     }
