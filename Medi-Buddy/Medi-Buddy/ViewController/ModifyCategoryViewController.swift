@@ -120,4 +120,17 @@ extension ModifyCategoryViewController: UITableViewDelegate {
         
         self.present(addCategoryViewController, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            guard let categoryToDelete = CategoryManager.shared.list[at: indexPath.row] else { return }
+            
+            CategoryManager.shared.delete(category: categoryToDelete)
+            self.categoryTableView.reloadData()
+        }
+    }
 }
