@@ -52,19 +52,19 @@ final class MediListViewController: UIViewController {
     }
     
     func configureNavigationBar() {
-        let addMedicineButton = UIBarButtonItem(barButtonSystemItem: .add,
-                                                target: self,
-                                                action: #selector(addMedicineButtonTapped))
-        addMedicineButton.tintColor = .systemCyan
-        
         let settingButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis.circle"),
                                             style: .plain,
                                             target: self,
                                             action: #selector(settingButtonTapped))
         settingButton.tintColor = .systemCyan
         
-        self.navigationController?.navigationBar.topItem?.leftBarButtonItem = addMedicineButton
-        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = settingButton
+        let addMedicineButton = UIBarButtonItem(barButtonSystemItem: .add,
+                                                target: self,
+                                                action: #selector(addMedicineButtonTapped))
+        addMedicineButton.tintColor = .systemCyan
+        
+        self.navigationController?.navigationBar.topItem?.leftBarButtonItem = settingButton
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = addMedicineButton
         self.navigationController?.navigationBar.topItem?.title = Date().convertDate()
     }
     

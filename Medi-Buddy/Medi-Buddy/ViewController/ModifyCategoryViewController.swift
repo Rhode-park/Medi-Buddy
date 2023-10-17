@@ -60,7 +60,7 @@ final class ModifyCategoryViewController: UIViewController {
                                                 action: #selector(addCategoryButtonTapped))
         addCategoryButton.tintColor = .systemCyan
         
-        self.navigationController?.navigationBar.topItem?.leftBarButtonItem = addCategoryButton
+        self.navigationController?.navigationBar.topItem?.rightBarButtonItem = addCategoryButton
         self.navigationController?.navigationBar.topItem?.title = "카테고리 수정"
     }
     
