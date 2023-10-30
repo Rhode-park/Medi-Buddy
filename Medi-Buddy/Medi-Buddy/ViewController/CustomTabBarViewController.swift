@@ -13,7 +13,7 @@ class CustomTabBarViewController: UITabBarController {
         super.viewDidLoad()
         configureTabBar()
         tabBar.barTintColor = .systemBackground
-        tabBar.tintColor = .systemCyan
+        tabBar.tintColor = UIColor(named: "Main")
     }
     
     private func configureTabBar() {

@@ -109,7 +109,7 @@ final class HeaderView: UICollectionReusableView {
     func configureHeader(category: Category) {
         categoryLabel.text = category.name.description
         alarmTimeLabel.text = category.alarmTime.convertTime()
-        categoryColorView.backgroundColor = .systemCyan
+        categoryColorView.backgroundColor = UIColor(named: "Main")
     }
     
     func configureIsCellHidden(isCellHidden: Bool) {

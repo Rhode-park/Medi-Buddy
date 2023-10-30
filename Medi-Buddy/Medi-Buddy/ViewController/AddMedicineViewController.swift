@@ -26,7 +26,7 @@ final class AddMedicineViewController: UIViewController {
     var cancelButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
-        button.tintColor = .systemCyan
+        button.tintColor = UIColor(named: "Main")
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -35,7 +35,7 @@ final class AddMedicineViewController: UIViewController {
     var doneButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "checkmark"), for: .normal)
-        button.tintColor = .systemCyan
+        button.tintColor = UIColor(named: "Main")
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -123,7 +123,7 @@ final class AddMedicineViewController: UIViewController {
     }
     
     private func configureButton() {
-        categoryButton.backgroundColor = .systemCyan
+        categoryButton.backgroundColor = UIColor(named: "Main")
         categoryButton.setTitle(categoryList.list.first?.name.description, for: .normal)
     }
     

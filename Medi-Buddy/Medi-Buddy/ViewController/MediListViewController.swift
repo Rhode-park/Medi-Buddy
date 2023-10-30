@@ -56,12 +56,12 @@ final class MediListViewController: UIViewController {
                                             style: .plain,
                                             target: self,
                                             action: #selector(settingButtonTapped))
-        settingButton.tintColor = .systemCyan
+        settingButton.tintColor = UIColor(named: "Main")
         
         let addMedicineButton = UIBarButtonItem(barButtonSystemItem: .add,
                                                 target: self,
                                                 action: #selector(addMedicineButtonTapped))
-        addMedicineButton.tintColor = .systemCyan
+        addMedicineButton.tintColor = UIColor(named: "Main")
         
         self.navigationController?.navigationBar.topItem?.leftBarButtonItem = settingButton
         self.navigationController?.navigationBar.topItem?.rightBarButtonItem = addMedicineButton

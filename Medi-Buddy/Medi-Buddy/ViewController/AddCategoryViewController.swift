@@ -16,7 +16,7 @@ final class AddCategoryViewController: UIViewController {
     var cancelButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
-        button.tintColor = .systemCyan
+        button.tintColor = UIColor(named: "Main")
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -25,7 +25,7 @@ final class AddCategoryViewController: UIViewController {
     var doneButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "checkmark"), for: .normal)
-        button.tintColor = .systemCyan
+        button.tintColor = UIColor(named: "Main")
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -71,7 +71,7 @@ final class AddCategoryViewController: UIViewController {
     
     let alarmSwitch: UISwitch = {
         let button = UISwitch()
-        button.onTintColor = .systemCyan
+        button.onTintColor = UIColor(named: "Main")
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button

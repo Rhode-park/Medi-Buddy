@@ -61,7 +61,7 @@ final class MediListCell: UICollectionViewCell {
         countLabel.text = medicine.doseState
         
         if medicine.currentDose > medicine.maximumDose {
-            countLabel.textColor = .systemCyan
+            countLabel.textColor = UIColor(named: "Main")
         } else {
             countLabel.textColor = .label
         }

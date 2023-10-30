@@ -30,7 +30,7 @@ class CategoryStackView: UIStackView {
         let button = UIButton()
         button.setImage(UIImage(systemName: "checkmark.square.fill"), for: .selected)
         button.setImage(UIImage(systemName: "square"), for: .normal)
-        button.tintColor = .systemCyan
+        button.tintColor = UIColor(named: "Main")
         button.setContentHuggingPriority(.required, for: .horizontal)
         
         return button

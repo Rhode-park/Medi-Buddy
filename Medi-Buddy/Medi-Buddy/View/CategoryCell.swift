@@ -79,6 +79,6 @@ final class CategoryCell: UITableViewCell {
     func configureCell(category: Category) {
         categoryLabel.text = category.name.description
         alarmTimeLabel.text = category.alarmTime.convertTime()
-        categoryColorView.backgroundColor = .systemCyan
+        categoryColorView.backgroundColor = UIColor(named: "Main")
     }
 }

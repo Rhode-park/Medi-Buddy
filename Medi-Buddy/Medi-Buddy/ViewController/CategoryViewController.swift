@@ -22,7 +22,7 @@ final class CategoryViewController: UIViewController {
     private let cancelButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
-        button.tintColor = .systemCyan
+        button.tintColor = UIColor(named: "Main")
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -31,7 +31,7 @@ final class CategoryViewController: UIViewController {
     private let doneButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "checkmark"), for: .normal)
-        button.tintColor = .systemCyan
+        button.tintColor = UIColor(named: "Main")
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
