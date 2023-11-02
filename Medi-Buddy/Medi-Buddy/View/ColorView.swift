@@ -10,6 +10,14 @@ import UIKit
 class ColorView: UIView {
     var colorChart = [[String]]()
     
+    private let colorChartLabel: UILabel = {
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .body)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        return label
+    }()
+    
     lazy var colorCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureIconLayout())
         collectionView.register(ColorCell.self, forCellWithReuseIdentifier: ColorCell.reuseIdentifier)
@@ -20,12 +28,18 @@ class ColorView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configureUI()
         configureDataSource()
         configureDelegate()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureUI() {
+        configureSubView()
+        configureConstraint()
     }
     
     private func configureDataSource() {
@@ -36,12 +50,17 @@ class ColorView: UIView {
         colorCollectionView.delegate = self
     }
     
+    private func configureSubView() {
+        self.addSubview(colorChartLabel)
+        self.addSubview(colorCollectionView)
+    }
+    
     private func configureIconLayout() -> UICollectionViewCompositionalLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.2), heightDimension: .fractionalHeight(1.0))
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/4), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        item.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
         
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.2))
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(1/4))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         
         let section = NSCollectionLayoutSection(group: group)
@@ -51,18 +70,34 @@ class ColorView: UIView {
         return layout
     }
     
+    private func configureConstraint() {
+        NSLayoutConstraint.activate([
+            colorChartLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            colorChartLabel.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+            colorChartLabel.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
+            colorCollectionView.topAnchor.constraint(equalTo: colorChartLabel.bottomAnchor, constant: 16),
+            colorCollectionView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+            colorCollectionView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor),
+            colorCollectionView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+        ])
+    }
+    
     func configureColorChart(colorChip: [[String]]) {
         colorChart = colorChip
+    }
+    
+    func configureColorChartLabel(name: String) {
+        colorChartLabel.text = name
     }
 }
 
 extension ColorView: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
