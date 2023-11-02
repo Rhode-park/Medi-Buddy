@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D038D3B92AEF7D6000A83C80 /* ColorChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = D038D3B82AEF7D6000A83C80 /* ColorChart.swift */; };
+		D038D3BB2AEF847300A83C80 /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D038D3BA2AEF847300A83C80 /* ColorView.swift */; };
+		D038D3BD2AF2459100A83C80 /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D038D3BC2AF2459100A83C80 /* ColorCell.swift */; };
 		D03C9D262A88E679000E9BD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D252A88E679000E9BD2 /* AppDelegate.swift */; };
 		D03C9D282A88E679000E9BD2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03C9D272A88E679000E9BD2 /* SceneDelegate.swift */; };
 		D03C9D2F2A88E67A000E9BD2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D03C9D2E2A88E67A000E9BD2 /* Assets.xcassets */; };
@@ -36,6 +39,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D038D3B82AEF7D6000A83C80 /* ColorChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorChart.swift; sourceTree = "<group>"; };
+		D038D3BA2AEF847300A83C80 /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
+		D038D3BC2AF2459100A83C80 /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		D03C9D222A88E679000E9BD2 /* Medi-Buddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Medi-Buddy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D03C9D252A88E679000E9BD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D03C9D272A88E679000E9BD2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +133,8 @@
 				D03C9D542A8BB0DC000E9BD2 /* CategoryStackView.swift */,
 				D045872E2AC3F6F9008F2986 /* SettingCell.swift */,
 				D04587362AC8DC73008F2986 /* CategoryCell.swift */,
+				D038D3BC2AF2459100A83C80 /* ColorCell.swift */,
+				D038D3BA2AEF847300A83C80 /* ColorView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -179,6 +187,7 @@
 			children = (
 				D0D4D8A62AAAEF8D0007679C /* IdentifierProtocol.swift */,
 				D045872C2AC3F5D4008F2986 /* SettingItems.swift */,
+				D038D3B82AEF7D6000A83C80 /* ColorChart.swift */,
 			);
 			path = Extra;
 			sourceTree = "<group>";
@@ -273,7 +282,10 @@
 				D03C9D3C2A88E8F5000E9BD2 /* MediCalendarViewController.swift in Sources */,
 				D04587312AC3FB31008F2986 /* ContainerViewController.swift in Sources */,
 				D03C9D532A8BACEC000E9BD2 /* CategoryViewController.swift in Sources */,
+				D038D3BD2AF2459100A83C80 /* ColorCell.swift in Sources */,
 				D03C9D3A2A88E8D5000E9BD2 /* MediListViewController.swift in Sources */,
+				D038D3BB2AEF847300A83C80 /* ColorView.swift in Sources */,
+				D038D3B92AEF7D6000A83C80 /* ColorChart.swift in Sources */,
 				D045872F2AC3F6F9008F2986 /* SettingCell.swift in Sources */,
 				D04587332AC546E2008F2986 /* ModifyCategoryViewController.swift in Sources */,
 				D03C9D432A88EAC1000E9BD2 /* Category.swift in Sources */,

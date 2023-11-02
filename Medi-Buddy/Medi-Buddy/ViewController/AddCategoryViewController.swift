@@ -86,6 +86,22 @@ final class AddCategoryViewController: UIViewController {
         return label
     }()
     
+    let categoryColorScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.isPagingEnabled = true
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return scrollView
+    }()
+    
+    let categoryColorStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -97,6 +113,7 @@ final class AddCategoryViewController: UIViewController {
         configureConstraint()
         configureTarget()
         configureContent()
+        configureColorStackView()
     }
     
     private func configureSubView() {
@@ -105,9 +122,11 @@ final class AddCategoryViewController: UIViewController {
         view.addSubview(categoryTextField)
         view.addSubview(alarmTimeLabel)
         view.addSubview(alarmTimePicker)
-        view.addSubview(categoryColorLabel)
         view.addSubview(alarmLabel)
         view.addSubview(alarmSwitch)
+        view.addSubview(categoryColorLabel)
+        view.addSubview(categoryColorScrollView)
+        categoryColorScrollView.addSubview(categoryColorStackView)
     }
     
     private func configureConstraint() {
@@ -130,12 +149,39 @@ final class AddCategoryViewController: UIViewController {
             alarmSwitch.centerXAnchor.constraint(equalTo: alarmTimePicker.centerXAnchor),
             categoryColorLabel.topAnchor.constraint(equalTo: alarmLabel.bottomAnchor, constant: 28),
             categoryColorLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            categoryColorScrollView.frameLayoutGuide.topAnchor.constraint(equalTo: categoryColorLabel.bottomAnchor, constant: 16),
+            categoryColorScrollView.frameLayoutGuide.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            categoryColorScrollView.frameLayoutGuide.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+            categoryColorScrollView.frameLayoutGuide.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -28),
+            categoryColorScrollView.contentLayoutGuide.topAnchor.constraint(equalTo: categoryColorLabel.bottomAnchor, constant: 16),
+            categoryColorScrollView.contentLayoutGuide.widthAnchor.constraint(equalTo: categoryColorScrollView.frameLayoutGuide.widthAnchor, multiplier: CGFloat(Float(ColorChart.allCases.count))),
+            categoryColorScrollView.contentLayoutGuide.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -28),
+            categoryColorStackView.topAnchor.constraint(equalTo: categoryColorScrollView.contentLayoutGuide.topAnchor),
+            categoryColorStackView.leadingAnchor.constraint(equalTo: categoryColorScrollView.contentLayoutGuide.leadingAnchor),
+            categoryColorStackView.trailingAnchor.constraint(equalTo: categoryColorScrollView.contentLayoutGuide.trailingAnchor),
+            categoryColorStackView.bottomAnchor.constraint(equalTo: categoryColorScrollView.contentLayoutGuide.bottomAnchor),
         ])
     }
     
     private func configureTarget() {
         cancelButton.addTarget(self, action: #selector(cancelEditing), for: .touchUpInside)
         doneButton.addTarget(self, action: #selector(doneEditing), for: .touchUpInside)
+    }
+    
+    private func configureColorStackView() {
+        for colors in ColorChart.allCases {
+            guard let colorChip = Palette().color[colors] else { return }
+            let colorView = ColorView()
+            colorView.translatesAutoresizingMaskIntoConstraints = false
+            colorView.configureColorChart(colorChip: colorChip)
+            categoryColorStackView.addArrangedSubview(colorView)
+            NSLayoutConstraint.activate([
+                colorView.widthAnchor.constraint(equalTo: categoryColorScrollView.frameLayoutGuide.widthAnchor),
+            ])
+        }
+        categoryColorStackView.arrangedSubviews[0].backgroundColor = .cyan
+        categoryColorStackView.arrangedSubviews[1].backgroundColor = .systemPink
+        categoryColorStackView.arrangedSubviews[2].backgroundColor = .black
     }
     
     @objc

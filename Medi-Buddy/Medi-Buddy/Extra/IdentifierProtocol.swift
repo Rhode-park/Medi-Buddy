@@ -32,3 +32,7 @@ extension SettingCell: IdentifierProtocol {
 extension CategoryCell: IdentifierProtocol {
     
 }
+
+extension ColorCell: IdentifierProtocol {
+    
+}
